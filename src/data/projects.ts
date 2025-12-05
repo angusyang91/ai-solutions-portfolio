@@ -113,5 +113,20 @@ export const projects: Project[] = [
     ],
     impact: "Democratized prompt engineering, enabling non-technical users to create sophisticated AI agent configurations.",
     tags: ["Prompt Engineering", "Meta-Programming", "Developer Tools"]
+  },
+  {
+    id: "recipe-ai",
+    number: "06",
+    title: "Recipe AI",
+    tagline: "A simple, ad-free way to search and extract recipes from any website.",
+    problem: "Searching for recipes online resulted in a flurry of ads everywhere, making it difficult to find exact ingredients and view simple instructions without being bombarded with excessive text and distractions.",
+    solution: [
+      "Created in Google AI Studio with vibe coding to enable recipe search or URL input from any recipe website.",
+      "Web scraping functionality that extracts only the essential information: ingredients and instructions, stripping away ads and clutter.",
+      "Multiple export options: save as an image for later viewing, send to email, or share with friends."
+    ],
+    impact: "Provides a clean, distraction-free recipe viewing experience, making it easy to focus on what matters: ingredients and cooking instructions.",
+    tags: ["Personal Project", "Web Scraping", "AI", "Recipe Extraction"],
+    screenshots: ["/recipe1.png", "/recipe2.png"]
   }
 ];
