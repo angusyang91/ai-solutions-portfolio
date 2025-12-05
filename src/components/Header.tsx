@@ -16,7 +16,7 @@ const Header = () => {
       transition={{ duration: 0.5 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="glass-card border-t-0 border-x-0">
+      <div className="bg-background/80 backdrop-blur-md border-b border-border">
         <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link 
             to="/" 

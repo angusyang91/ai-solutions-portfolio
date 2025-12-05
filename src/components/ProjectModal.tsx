@@ -21,7 +21,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-50"
           />
 
           {/* Modal */}
@@ -32,7 +32,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-4 md:inset-10 lg:inset-20 z-50 overflow-hidden"
           >
-            <div className="h-full glass-card rounded-2xl overflow-hidden flex flex-col">
+            <div className="h-full bg-card rounded-2xl overflow-hidden flex flex-col border border-border shadow-xl">
               {/* Header */}
               <div className="flex items-start justify-between p-6 md:p-8 border-b border-border">
                 <div className="flex-1 pr-8">
@@ -44,7 +44,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full"
+                          className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
                         >
                           {tag}
                         </span>
@@ -60,7 +60,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-lg hover:bg-secondary transition-colors"
+                  className="p-2 rounded-lg hover:bg-muted transition-colors"
                 >
                   <X className="w-6 h-6 text-muted-foreground" />
                 </button>
@@ -110,15 +110,15 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   {/* Impact Section */}
                   <section>
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-green-500/10">
-                        <Zap className="w-5 h-5 text-green-500" />
+                      <div className="p-2 rounded-lg bg-emerald-100">
+                        <Zap className="w-5 h-5 text-emerald-600" />
                       </div>
                       <h3 className="text-xl font-semibold text-foreground">
                         The Impact
                       </h3>
                     </div>
                     <div className="pl-12">
-                      <p className="text-lg font-medium text-foreground bg-gradient-to-r from-green-500/10 to-transparent p-4 rounded-lg border-l-2 border-green-500">
+                      <p className="text-lg font-medium text-foreground bg-gradient-to-r from-emerald-50 to-transparent p-4 rounded-lg border-l-2 border-emerald-500">
                         {project.impact}
                       </p>
                     </div>
