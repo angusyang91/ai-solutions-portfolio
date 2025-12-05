@@ -4,10 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const Header = () => {
   const location = useLocation();
   
-  const navItems = [
-    { label: "Home", path: "/" },
-    { label: "Projects", path: "/projects" },
-  ];
+  const navItems: Array<{ label: string; path: string }> = [];
 
   return (
     <motion.header
