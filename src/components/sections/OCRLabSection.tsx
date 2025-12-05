@@ -1,8 +1,34 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Clock, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
+const screenshots = ["/OCR1.png", "/OCR2.png"];
+const screenshotLabels = [
+  "Handwritten doctor notes requiring manual two-person data entry",
+  "Clean JSON schema mapping (patient_name, etc.) ready for system of record"
+];
+
 const OCRLabSection = () => {
+  const [selectedScreenshotIndex, setSelectedScreenshotIndex] = useState<number | null>(null);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (selectedScreenshotIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' && selectedScreenshotIndex > 0) {
+        setSelectedScreenshotIndex(selectedScreenshotIndex - 1);
+      } else if (e.key === 'ArrowRight' && selectedScreenshotIndex < screenshots.length - 1) {
+        setSelectedScreenshotIndex(selectedScreenshotIndex + 1);
+      } else if (e.key === 'Escape') {
+        setSelectedScreenshotIndex(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedScreenshotIndex]);
   return (
     <section className="py-24">
       <div className="container mx-auto px-6">
@@ -41,11 +67,16 @@ const OCRLabSection = () => {
                 </span>
               </div>
               <div className="p-4">
-                <img 
-                  src="/OCR1.png" 
-                  alt="Handwritten lab note" 
-                  className="w-full h-64 object-cover rounded-lg border border-border"
-                />
+                <button
+                  onClick={() => setSelectedScreenshotIndex(0)}
+                  className="w-full cursor-pointer hover:opacity-90 transition-opacity"
+                >
+                  <img 
+                    src="/OCR1.png" 
+                    alt="Handwritten lab note" 
+                    className="w-full h-64 object-cover rounded-lg border border-border"
+                  />
+                </button>
                 <p className="text-sm text-muted-foreground mt-3">
                   Handwritten doctor notes requiring manual two-person data entry
                 </p>
@@ -73,11 +104,16 @@ const OCRLabSection = () => {
                 </span>
               </div>
               <div className="p-4">
-                <img 
-                  src="/OCR2.png" 
-                  alt="Structured UI with parsed fields" 
-                  className="w-full h-64 object-cover rounded-lg border border-border"
-                />
+                <button
+                  onClick={() => setSelectedScreenshotIndex(1)}
+                  className="w-full cursor-pointer hover:opacity-90 transition-opacity"
+                >
+                  <img 
+                    src="/OCR2.png" 
+                    alt="Structured UI with parsed fields" 
+                    className="w-full h-64 object-cover rounded-lg border border-border"
+                  />
+                </button>
                 <p className="text-sm text-muted-foreground mt-3">
                   Clean JSON schema mapping (patient_name, etc.) ready for system of record
                 </p>
@@ -118,6 +154,72 @@ const OCRLabSection = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedScreenshotIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedScreenshotIndex(null)}
+            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[60] flex items-center justify-center p-4"
+          >
+            <button
+              onClick={() => setSelectedScreenshotIndex(null)}
+              className="absolute top-4 right-4 p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors z-10"
+              aria-label="Close lightbox"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+            
+            {/* Left Navigation Button */}
+            {selectedScreenshotIndex > 0 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedScreenshotIndex(selectedScreenshotIndex - 1);
+                }}
+                className="absolute left-4 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors z-10"
+                aria-label="Previous screenshot"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+            )}
+
+            {/* Right Navigation Button */}
+            {selectedScreenshotIndex < screenshots.length - 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedScreenshotIndex(selectedScreenshotIndex + 1);
+                }}
+                className="absolute right-4 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors z-10"
+                aria-label="Next screenshot"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+            )}
+
+            <motion.img
+              key={selectedScreenshotIndex}
+              initial={{ scale: 0.9, opacity: 0, x: 20 }}
+              animate={{ scale: 1, opacity: 1, x: 0 }}
+              exit={{ scale: 0.9, opacity: 0, x: -20 }}
+              transition={{ duration: 0.2 }}
+              src={screenshots[selectedScreenshotIndex]}
+              alt={screenshotLabels[selectedScreenshotIndex]}
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Screenshot Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-lg bg-white/10 text-white text-sm z-10">
+              {selectedScreenshotIndex + 1} / {screenshots.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

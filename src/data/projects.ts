@@ -39,22 +39,22 @@ export const projects: Project[] = [
   {
     id: "strictly-grounded-support-expert",
     number: "02",
-    title: "The Strictly Grounded Support Expert",
-    tagline: "Eliminating Hallucinations in Technical Support via Domain-Bounded Knowledge Graphs.",
-    problem: "Standard LLMs failed at context-specific support queries (e.g., 'What are the RBAC limits?'), often retrieving generic or competitor info from the open web.",
+    title: "The Dynamic Support Response Agent",
+    tagline: "Transforming 300+ static templates into real-time, context-aware support dialogue.",
+    problem: "Support reps faced high cognitive load and delay manually keyword-searching (Command+F) through dense transcripts and navigating a bloated library of 300+ static email templates to formulate responses.",
     solution: [
-      "Implemented a Knowledge Graph to ingest fragmented internal docs (Wikis, API docs).",
-      "Enforced 'Strict Domain Bounding' to prevent open-web access, ensuring answers come only from verified internal data."
+      "Deployed a RAG-based Support Agent to ingest and index historical call transcripts and the full email template repository.",
+      "Engineered synthesis logic that doesn't just retrieve documents, but constructs the 'best copy' by combining optimal phrasing from both successful past calls and approved templates."
     ],
-    impact: "Achieved 100% answer grounding, allowing vague user queries to yield precise, documentation-backed answers.",
-    tags: ["Knowledge Graphs", "RAG", "Technical Support"],
+    impact: "Eliminated manual search friction, allowing agents to instantly generate responses grounded in the team's collective best practices for both voice and email channels.",
+    tags: ["RAG", "Workflow Automation", "CX Operations"],
     roi: {
       title: "ROI Calculator",
       metrics: [
         { label: "minutes saved per day", value: "200" },
         { label: "annual impact (labor costs only)", value: "~$17,333" }
       ],
-      description: "100% Answer grounding—allowing vague user queries to yield precise, documentation-backed answers."
+      description: "Drastic reduction in search and formulation time—ensuring every rep speaks with the precision of the best historical interactions."
     }
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
   {
     id: "life-sciences-ocr-lab",
     number: "04",
-    title: "The Life Sciences OCR Lab",
+    title: "Transforming Doctor Scribbles To Readable Text",
     tagline: "Automating Medical Transcription with Human-in-the-Loop Validation.",
     problem: "A manual, two-person data entry process for handwritten doctor notes was causing massive delays in a Life Sciences workflow.",
     solution: [
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     id: "prompt-architect",
     number: "05",
     title: "The Prompt Architect",
-    tagline: "Transforming vague requests into sophisticated system prompts.",
+    tagline: "Transforming User Requests into Sophisticated System Prompts",
     problem: "Users struggled to create production-ready prompts with proper structure, guardrails, and context from basic intent.",
     solution: [
       "An AI agent that elevates basic user intent into detailed, production-ready prompts.",
