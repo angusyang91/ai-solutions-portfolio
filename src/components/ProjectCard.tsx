@@ -15,17 +15,10 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onClick={onClick}
-      className="group relative glass-card rounded-2xl p-8 cursor-pointer transition-all duration-500 hover:border-primary/30"
-      style={{
-        boxShadow: "var(--shadow-card)",
-      }}
-      whileHover={{
-        y: -4,
-        boxShadow: "var(--shadow-card-hover)",
-      }}
+      className="group relative bg-card rounded-2xl p-8 cursor-pointer transition-all duration-500 border border-border hover:border-primary/30 shadow-sm hover:shadow-lg"
     >
       {/* Project number */}
-      <div className="absolute top-8 right-8 text-6xl font-bold text-muted/30 select-none">
+      <div className="absolute top-8 right-8 text-6xl font-bold text-muted/20 select-none">
         {project.number}
       </div>
 
@@ -35,7 +28,7 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
           {project.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full"
+              className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
             >
               {tag}
             </span>

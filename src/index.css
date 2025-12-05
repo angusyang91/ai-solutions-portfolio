@@ -6,57 +6,66 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    /* Light Mode - Clinical/Professional Life Sciences Aesthetic */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 199 89% 48%;
-    --primary-foreground: 222 47% 6%;
+    --primary: 215 90% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 215 90% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 199 89% 48%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 90% 45%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(217 91% 60%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(222 47% 8%) 0%, hsl(222 47% 6%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(217 33% 12%) 0%, hsl(222 47% 8%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(199 89% 70%) 100%);
+    /* Custom design tokens - Light Mode */
+    --gradient-primary: linear-gradient(135deg, hsl(215 90% 45%) 0%, hsl(199 89% 48%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 20% 95%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(215 90% 45%) 0%, hsl(199 89% 48%) 100%);
     
-    --shadow-glow: 0 0 60px hsl(199 89% 48% / 0.15);
-    --shadow-card: 0 4px 24px hsl(222 47% 3% / 0.4);
-    --shadow-card-hover: 0 8px 40px hsl(199 89% 48% / 0.1);
+    --shadow-glow: 0 0 60px hsl(215 90% 45% / 0.1);
+    --shadow-card: 0 4px 24px hsl(222 47% 11% / 0.06);
+    --shadow-card-hover: 0 8px 40px hsl(215 90% 45% / 0.12);
 
-    --glass-background: hsl(217 33% 12% / 0.6);
-    --glass-border: hsl(217 33% 20% / 0.5);
+    --glass-background: hsl(0 0% 100% / 0.8);
+    --glass-border: hsl(214 32% 91%);
 
-    --sidebar-background: 222 47% 6%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 199 89% 48%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 217 33% 14%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 215 90% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 215 90% 45%;
+
+    /* Enterprise/Life Sciences specific tokens */
+    --success: 152 69% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
   }
 }
 
@@ -71,7 +80,7 @@
   }
 
   ::selection {
-    @apply bg-primary/30 text-foreground;
+    @apply bg-primary/20 text-foreground;
   }
 }
 
@@ -113,6 +122,43 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Code block styling */
+  .code-block {
+    @apply bg-slate-900 text-slate-100 rounded-lg overflow-hidden;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  .code-block pre {
+    @apply p-4 text-sm overflow-x-auto;
+  }
+
+  .code-block .line-number {
+    @apply text-slate-500 select-none mr-4;
+  }
+
+  /* Stats card */
+  .stats-card {
+    @apply bg-card border border-border rounded-xl p-6;
+    box-shadow: var(--shadow-card);
+  }
+
+  .stats-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Badge styles */
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-700 border-emerald-200;
+  }
+
+  .badge-primary {
+    @apply bg-primary/10 text-primary border-primary/20;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-700 border-amber-200;
   }
 }
 

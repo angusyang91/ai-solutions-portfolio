@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background gradient orbs */}
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      {/* Subtle background pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--border)) 1px, transparent 0)',
+          backgroundSize: '48px 48px',
+          opacity: 0.4
+        }} />
       </div>
 
-      <div className="container mx-auto px-6 py-32 relative z-10">
+      <div className="container mx-auto px-6 py-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -28,10 +31,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-balance"
+            className="text-5xl md:text-7xl font-bold tracking-tight mb-8 text-balance text-foreground"
           >
-            Solving complex business problems with{" "}
-            <span className="gradient-text">technical AI solutions</span>
+            Enterprise AI Solutions for{" "}
+            <span className="gradient-text">Life Sciences & SaaS</span>
           </motion.h1>
 
           <motion.p
@@ -40,27 +43,20 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-balance"
           >
-            I design and build AI agent systems that transform enterprise workflows—turning weeks of manual work into minutes of automated intelligence.
+            Designing AI agent systems that transform enterprise workflows—turning weeks of manual work into minutes of automated intelligence.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Link
-              to="/projects"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30"
-            >
-              View Projects
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
             <a
-              href="#about"
-              className="inline-flex items-center gap-2 px-8 py-4 text-foreground font-medium rounded-lg border border-border hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300"
+              href="#projects"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
             >
-              Learn More
+              <span className="text-sm font-medium">Explore Projects</span>
+              <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
           </motion.div>
         </div>
@@ -73,11 +69,11 @@ const Hero = () => {
           className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
         >
           {[
-            { value: "4+", label: "AI Projects" },
+            { value: "78+", label: "Hours Saved Weekly" },
             { value: "100%", label: "Answer Grounding" },
-            { value: "10+", label: "Agents per Session" },
-            { value: "Weeks→Min", label: "Time Saved" },
-          ].map((stat, index) => (
+            { value: "300", label: "Hours/Year in Error Reduction" },
+            { value: "$17K+", label: "Annual ROI Impact" },
+          ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
                 {stat.value}
