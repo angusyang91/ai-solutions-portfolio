@@ -195,7 +195,7 @@ When a user provides input, follow this process:
                             className="mt-6 rounded-xl overflow-hidden border border-border shadow-lg"
                           >
                             <iframe
-                              src="https://app.writer.com/organization/937972/team/853654/writer-agent"
+                              src="https://embed.writer.com/chat/sE_PdZrEzfoA4ZHEz7yHOcrpnRCL4p3R-c78tSv7pv4"
                               className="w-full"
                               style={{ height: "700px" }}
                               allow="clipboard-read; clipboard-write"
