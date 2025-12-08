@@ -364,6 +364,10 @@ When a user provides input, follow this process:
                                   src={screenshot}
                                   alt={`${project.title} screenshot ${index + 1}`}
                                   className="w-full h-64 object-cover"
+                                  onError={(e) => {
+                                    console.error(`Failed to load image: ${screenshot}`);
+                                    e.currentTarget.style.display = 'none';
+                                  }}
                                 />
                               </button>
                             ))}

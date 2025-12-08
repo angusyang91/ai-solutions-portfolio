@@ -69,6 +69,7 @@ export const projects: Project[] = [
     ],
     impact: "Democratized technical agent building, reducing 'Idea to Demo' time by hours.",
     tags: ["Meta-Programming", "Developer Tools", "Python"],
+    screenshots: ["/AB1.png"],
     roi: {
       metrics: [
         { label: "of Innovation Time Gained", value: "78 Hours" },
