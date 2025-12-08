@@ -12,6 +12,7 @@ interface ProjectModalProps {
 const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   const [selectedScreenshotIndex, setSelectedScreenshotIndex] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
+  const [showIframe, setShowIframe] = useState(false);
 
   const metaPrompt = `You are a Prompt Engineering Expert Agent. Your role is to transform basic user requests into robust, well-engineered prompts optimized for LLM performance.
 
@@ -174,6 +175,35 @@ When a user provides input, follow this process:
                         <p className="mt-4 text-sm text-muted-foreground italic">
                           * This agent acts as a middleware layer to sanitize and upgrade user intent before it reaches the execution model.
                         </p>
+                      </div>
+
+                      {/* Try it Button and Writer Iframe */}
+                      <div className="mb-12">
+                        <button
+                          onClick={() => setShowIframe(!showIframe)}
+                          className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-sm hover:shadow-md"
+                        >
+                          {showIframe ? "Hide" : "Try it"}
+                        </button>
+                        
+                        {showIframe && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-6 rounded-xl overflow-hidden border border-border shadow-lg"
+                          >
+                            <iframe
+                              src="https://app.writer.com/organization/937972/team/853654/writer-agent"
+                              className="w-full"
+                              style={{ height: "700px" }}
+                              allow="clipboard-read; clipboard-write"
+                              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+                              title="Writer Agent"
+                            />
+                          </motion.div>
+                        )}
                       </div>
 
                       <hr className="my-12 border-border" />
